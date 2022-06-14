@@ -1,0 +1,179 @@
+.fa-solid{
+    cursor: pointer;
+}
+/* 
+input[type ='checkbox']{
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+} */
+.wrapper{
+  
+    width: 370px;
+    height: 450px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding: 2rem 0; */
+    margin: 2rem 0;
+    border-radius: 4px;
+    position: relative;
+}
+
+.header{
+    background-color: #B53471;
+    color: #fff;
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.input{
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.input input{
+    width: 300px;
+    padding: 7px 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.input label{
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    cursor: pointer;
+}
+
+.input .fa-solid{
+    font-size: 18px;
+    color: #B53471;
+    transition: all 0.3s ease-out 0s;
+}
+
+.input .fa-solid:hover{
+    transform: scale(1.1);
+}
+
+.todolist{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 320px;
+    padding: 10px 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    margin: 8px 0;
+}
+
+.todo-front{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-front input{
+    position: absolute;
+    top: 10px;
+    left: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+}
+
+.todo-front h2{
+    font-size: 16px;
+    margin: 0 20px;
+    font-weight: 600;
+}
+
+.todo-back{
+    position: relative;
+}
+.more{
+    /* display: none; */
+    position: absolute;
+    width: 100px;
+    height: 93px;
+    border: 1px solid #ccc;
+    /* padding: 10px; */
+    left: -60px;
+    top: 35px;
+    background-color: #fff;
+    color: #B53471;
+    border-radius: 3px;
+}
+
+.more div{
+    width: 100%;
+    /* background-color: #B53471; */
+    margin-bottom: 8px;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.more div:hover{
+    background-color: #B53471;
+    color: #fff;
+}
+
+#overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#overlay div{
+    display: flex;
+    flex-direction: column;
+}
+
+#overlay label{
+    margin: 5px 0;
+    color: #fff;
+}
+#overlay input{
+    width: 300px;
+    border: none;
+    outline: none;
+    margin-bottom: 1rem;
+    padding: 8px 10px;
+    cursor: pointer; 
+    border-radius: 4px; 
+}
+
+#overlay button{
+    background-color: #B53471;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 8px 25px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
