@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { StyledOverlay, StyledDiv,StyledLabel,StyledInput,StyledButton} from "../styles/Common.styled";
 import "./Todo.css";
+
 
 
 const Todo = () => {
@@ -8,6 +10,7 @@ const Todo = () => {
   const [items, setItems] = useState([]);
   const [edits, setEdits] = useState(false);
   const [editedText, setEditedText] = useState("");
+  const [notifyStatus, setNotifyStatus] = useState(false);
 
   const moreHandler = (id) =>{
   
@@ -50,12 +53,20 @@ const Todo = () => {
   const editedTextHandler = (e) => {
     setEditedText(e.target.value);
   };
+
+  const openNotify = () => {
+    setNotifyStatus(true)
+  }
+
+  const closeNotify = () => {
+    setNotifyStatus(false)
+  }
   return (
     <div className="wrapper">
-      <div id="overlay" style={{ display: edits ? "flex" : "none" }}>
-        <div>
-          <label htmlFor="text">Edit todo</label>
-          <input
+      <StyledOverlay style={{ display: edits ? "flex" : "none" }}>
+        <StyledDiv>
+          <StyledLabel htmlFor="text">Edit todo</StyledLabel>
+          <StyledInput
             type="text"
             name="text"
             id=""
@@ -63,9 +74,29 @@ const Todo = () => {
             onChange={editedTextHandler}
             value={editedText}
           />
-        </div>
-        <button onClick={saveEdits}>Save changes</button>
-      </div>
+        </StyledDiv>
+        <StyledButton onClick={saveEdits}>Save changes</StyledButton>
+      </StyledOverlay>
+
+      <StyledOverlay style = {{display:notifyStatus?"flex":"none"}}>
+ <StyledDiv>
+          <StyledLabel htmlFor="date">Enter Date</StyledLabel>
+          <StyledInput
+            type="date"
+            name="date"
+            id="date"
+          />
+        </StyledDiv>
+        <StyledDiv>
+          <StyledLabel htmlFor="time">Edit todo</StyledLabel>
+          <StyledInput
+            type="time"
+            name="time"
+            id="time"
+          />
+        </StyledDiv>
+        <StyledButton onClick={closeNotify}>Save changes</StyledButton>
+      </StyledOverlay>
       <div className="header">Todo list</div>
       <div className="input">
         <input
@@ -105,7 +136,7 @@ const Todo = () => {
              <div onClick={openEdits}>
               Edit <i className="fa-solid fa-pen-to-square"></i>
             </div>
-            <div>
+            <div onClick = {openNotify}>
               Notify <i className="fa-solid fa-bell"></i>
             </div>
             <div onClick={() => deleteItem(index)}>
