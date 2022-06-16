@@ -38,5 +38,26 @@ export const StyledButton = styled.button`
     border: none;
     outline: none;
     padding: 8px 25px;
+    margin: 10px 0;
     cursor: pointer;
-    border-radius: 4px;`
+    border-radius: 4px;
+    font-size: 15px;
+
+    &:hover{
+      background-color: #fd79a8;
+    }
+    `
+
+export const StyledNotifyDiv = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #fff;
+border-radius: 4px;
+width:300px;
+height: 120px;
+`
+export const StyledTitle = styled.div`
+font-size: 16px;
+`

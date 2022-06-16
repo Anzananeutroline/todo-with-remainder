@@ -113,6 +113,7 @@ input[type ='checkbox']{
     background-color: #fff;
     color: #B53471;
     border-radius: 3px;
+    z-index: 1;
 }
 
 .more div{
@@ -125,6 +126,7 @@ input[type ='checkbox']{
     align-items: center;
     font-size: 14px;
     cursor: pointer;
+  
 }
 
 .more div:hover{
@@ -177,3 +179,7 @@ input[type ='checkbox']{
     border-radius: 4px;
 }
 
+input[type =checkbox]{
+    accent-color: green;
+    
+}

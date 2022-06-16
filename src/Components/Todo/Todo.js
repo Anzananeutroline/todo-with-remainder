@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyledOverlay, StyledDiv,StyledLabel,StyledInput,StyledButton} from "../styles/Common.styled";
+import { StyledOverlay, StyledDiv,StyledLabel,StyledInput,StyledButton,StyledNotifyDiv} from "../styles/Common.styled";
 import "./Todo.css";
 
 
@@ -11,13 +11,14 @@ const Todo = () => {
   const [edits, setEdits] = useState(false);
   const [editedText, setEditedText] = useState("");
   const [notifyStatus, setNotifyStatus] = useState(false);
+   const [notifyDone, setNotifyDone] = useState(false);
 
   const moreHandler = (id) =>{
   
   if(more===id)
   {
-    setMore(null)
-    return false
+    setMore(null);
+    return false;
   }
   setMore(id)
   }
@@ -48,6 +49,7 @@ const Todo = () => {
 
   const openEdits = () => {
     setEdits(true);
+    setMore(false);
   };
 
   const editedTextHandler = (e) => {
@@ -55,12 +57,20 @@ const Todo = () => {
   };
 
   const openNotify = () => {
-    setNotifyStatus(true)
+    setMore(false);
+    setNotifyStatus(true);
   }
 
   const closeNotify = () => {
-    setNotifyStatus(false)
+    setNotifyStatus(false);
+    setNotifyDone(true);
+    setMore(false);
   }
+
+  const onNotifyDone = () => {
+    setNotifyDone(false);
+  }
+
   return (
     <div className="wrapper">
       <StyledOverlay style={{ display: edits ? "flex" : "none" }}>
@@ -88,7 +98,7 @@ const Todo = () => {
           />
         </StyledDiv>
         <StyledDiv>
-          <StyledLabel htmlFor="time">Edit todo</StyledLabel>
+          <StyledLabel htmlFor="time">Enter time</StyledLabel>
           <StyledInput
             type="time"
             name="time"
@@ -97,6 +107,14 @@ const Todo = () => {
         </StyledDiv>
         <StyledButton onClick={closeNotify}>Save changes</StyledButton>
       </StyledOverlay>
+
+
+      <StyledOverlay style={{ display: notifyDone ? "flex" : "none" }}>
+        <StyledNotifyDiv>
+         <div> Notification saved successfully</div>
+          <StyledButton onClick={onNotifyDone}>OK</StyledButton>
+        </StyledNotifyDiv>
+      </StyledOverlay> 
       <div className="header">Todo list</div>
       <div className="input">
         <input
@@ -116,7 +134,7 @@ const Todo = () => {
         return (
           <div className="todolist" key={index}>
             <div className="todo-front">
-              <input type="checkbox" name="" id="" />
+              <input type="checkbox" name="" id="" onChange={ () => {}}/>
               <h2>{item}</h2>
             </div>
             <div className="todo-back">
