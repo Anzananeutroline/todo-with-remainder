@@ -1,76 +1,96 @@
-import React, { useState } from "react";
+import React, {useContext} from "react";
 import { StyledOverlay, StyledDiv,StyledLabel,StyledInput,StyledButton,StyledNotifyDiv} from "../styles/Common.styled";
 import "./Todo.css";
+import TodoContext from "../../TodoContext";
 
 
 
 const Todo = () => {
-  const [more, setMore] = useState(null);
-  const [input, setInput] = useState("");
-  const [items, setItems] = useState([]);
-  const [edits, setEdits] = useState(false);
-  const [editedText, setEditedText] = useState("");
-  const [notifyStatus, setNotifyStatus] = useState(false);
-   const [notifyDone, setNotifyDone] = useState(false);
+  // const [more, setMore] = useState(null);
+  // const [input, setInput] = useState("");
+  // const [items, setItems] = useState([]);
+  // const [edits, setEdits] = useState(false);
+  // const [editedText, setEditedText] = useState("");
+  // const [notifyStatus, setNotifyStatus] = useState(false);
+  //  const [notifyDone, setNotifyDone] = useState(false);
 
-  const moreHandler = (id) =>{
+  // const moreHandler = (id) =>{
   
-  if(more===id)
-  {
-    setMore(null);
-    return false;
-  }
-  setMore(id)
-  }
-  const inputHandler = (e) => {
-    setInput(e.target.value);
-  };
+  // if(more===id)
+  // {
+  //   setMore(null);
+  //   return false;
+  // }
+  // setMore(id)
+  // }
+  // const inputHandler = (e) => {
+  //   setInput(e.target.value);
+  // };
 
-  const addItems = () => {
-    if (!input) {
-    } else {
-      setItems([...items, input]);
-      setInput("");
+  // const addItems = () => {
+  //   if (!input) {
+  //   } else {
+  //     setItems([...items, input]);
+  //     setInput("");
     
-    }
-  };
+  //   }
+  // };
 
-  const deleteItem = (id) => {
-    const updatedItems = items.filter((element, index) => {
-      return index !== id;
-    });
+  // const deleteItem = (id) => {
+  //   const updatedItems = items.filter((element, index) => {
+  //     return index !== id;
+  //   });
 
-    setItems(updatedItems);
-  };
+  //   setItems(updatedItems);
+  // };
 
-  const saveEdits = () => {
-    setEdits(false);
-  };
+  // const saveEdits = () => {
+  //   setEdits(false);
+  // };
 
-  const openEdits = () => {
-    setEdits(true);
-    setMore(false);
-  };
+  // const openEdits = () => {
+  //   setEdits(true);
+  //   setMore(false);
+  // };
 
-  const editedTextHandler = (e) => {
-    setEditedText(e.target.value);
-  };
+  // const editedTextHandler = (e) => {
+  //   setEditedText(e.target.value);
+  // };
 
-  const openNotify = () => {
-    setMore(false);
-    setNotifyStatus(true);
-  }
+  // const openNotify = () => {
+  //   setMore(false);
+  //   setNotifyStatus(true);
+  // }
 
-  const closeNotify = () => {
-    setNotifyStatus(false);
-    setNotifyDone(true);
-    setMore(false);
-  }
+  // const closeNotify = () => {
+  //   setNotifyStatus(false);
+  //   setNotifyDone(true);
+  //   setMore(false);
+  // }
 
-  const onNotifyDone = () => {
-    setNotifyDone(false);
-  }
+  // const onNotifyDone = () => {
+  //   setNotifyDone(false);
+  // }
 
+  const { more } = useContext(TodoContext);
+  const { input } = useContext(TodoContext);
+  const [items] = useContext(TodoContext);
+  console.log(items)
+  const { edits } = useContext(TodoContext);
+  const { editedText } = useContext(TodoContext);
+  const { notifyStatus } = useContext(TodoContext);
+  const { notifyDone } = useContext(TodoContext);
+  const { moreHandler} = useContext(TodoContext);
+  const {inputHandler } = useContext(TodoContext);
+  const {addItems } = useContext(TodoContext);
+  const { deleteItem} = useContext(TodoContext);
+  const {saveEdits } = useContext(TodoContext);
+  const { openEdits} = useContext(TodoContext);
+  const {editedTextHandler } = useContext(TodoContext);
+  const { openNotify} = useContext(TodoContext);
+  const {closeNotify } = useContext(TodoContext);
+  const { onNotifyDone} = useContext(TodoContext);
+  
   return (
     <div className="wrapper">
       <StyledOverlay style={{ display: edits ? "flex" : "none" }}>
@@ -130,7 +150,9 @@ const Todo = () => {
       </div>
 
       {/* <TodoMenu items={items} /> */}
+
       {items.map((item, index) => {
+        
         return (
           <div className="todolist" key={index}>
             <div className="todo-front">
